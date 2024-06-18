@@ -37,12 +37,32 @@ const getAllUser = async (req: Request, res: Response) => {
     }
 }
 
-const getSingleUser = async (req: Response, res: Response) => {
+const getSingleUser = async (req: Request, res: Response) => {
     try {
-        const result = await userService.getSingleUser();
+        const userId = req.params.id
+        const result = await userService.getSingleUser(userId);
         res.send({
             state: true,
-            message: "User geting successfully",
+            message: "User getting successfully",
+            result
+        })
+    } catch (error) {
+        res.json({
+            state: false,
+            message: "Somthing went worring",
+            error
+        })
+    }
+}
+
+const updateUser = async (req: Request, res: Response) => {
+    try {
+        const userId = req.params.id;
+        const body = req.body;
+        const result = await userService.updateUser(userId, body)
+        res.send({
+            state: true,
+            message: "User Updated successfully",
             result
         })
     } catch (error) {
@@ -56,5 +76,7 @@ const getSingleUser = async (req: Response, res: Response) => {
 
 export const userController = {
     createUser,
-    getAllUser
+    getAllUser,
+    getSingleUser,
+    updateUser
 }
