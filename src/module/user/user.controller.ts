@@ -24,7 +24,7 @@ const getAllUser = async (req: Request, res: Response) => {
     try {
         const result = await userService.getUsers();
         res.send({
-            state: false,
+            state: true,
             message: "User get successfully",
             result
         })
@@ -39,4 +39,5 @@ const getAllUser = async (req: Request, res: Response) => {
 
 export const userController = {
     createUser,
+    getAllUser
 }
