@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
+import { IUser } from "./user.interface";
 
-const userSchema = new Schema({
+const userSchema = new Schema<IUser>({
     name: {
         type: String,
         required: [true, 'Please provide your name'],
@@ -38,5 +39,5 @@ const userSchema = new Schema({
     },
 });
 
-const User = model("User", userSchema)
+const User = model<IUser>("User", userSchema)
 export default User
