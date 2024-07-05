@@ -19,7 +19,7 @@ const userSchema = new Schema<IUser>({
             },
             message: '{VALUE} is not a valid email',
         },
-        immutable: true,
+        // immutable: true,
     },
     photo: String,
     role: {
