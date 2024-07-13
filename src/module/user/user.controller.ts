@@ -82,6 +82,7 @@ const deleteUser = async (req: Request, res: Response) => {
             state: true,
             message: "User Delete successfully",
             result: {}
+            
         })
     } catch (error) {
         res.json({
